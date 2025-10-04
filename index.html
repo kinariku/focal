@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focal - 思考の渋滞を、次の一歩へ</title>
+    <meta name="description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
+    <link rel="icon" type="image/png" href="assets/burn-favicon.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://focal.kinari.app/">
+    <meta property="og:title" content="Focal - 思考の渋滞を、次の一歩へ">
+    <meta property="og:description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
+    <meta property="og:image" content="https://focal.kinari.app/assets/burn_ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://focal.kinari.app/">
+    <meta name="twitter:title" content="Focal - 思考の渋滞を、次の一歩へ">
+    <meta name="twitter:description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
+    <meta name="twitter:image" content="https://focal.kinari.app/assets/burn_ogp.png">
+    <style>
+        :root {
+            --color-background: #f8f7f4;
+            --color-surface: #3d4f3f;
+            --color-accent: #7a8a7a;
+            --color-text-primary: #2d3436;
+            --color-text-secondary: #636e63;
+            --color-text-light: #e8ede8;
+            --space-section: clamp(72px, 10vw, 160px);
+            --space-section-compact: clamp(56px, 8vw, 112px);
+            --font-size-body: clamp(0.96rem, 0.94rem + 0.35vw, 1.15rem);
+            --font-size-sm: clamp(0.83rem, 0.8rem + 0.25vw, 0.93rem);
+            --line-height-base: 1.7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif;
+            line-height: var(--line-height-base);
+            color: var(--color-text-primary);
+            background: var(--color-background);
+            overflow-x: hidden;
+            font-size: var(--font-size-body);
+            letter-spacing: 0.01em;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, #3d4f3f 0%, #2d3e30 50%, #1a2420 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/forest-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(2px) brightness(0.3);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(61, 79, 63, 0.7) 0%, rgba(45, 62, 48, 0.8) 50%, rgba(26, 36, 32, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #e8ede8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(232, 237, 232, 0.8);
+            margin-bottom: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .store-buttons img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .store-buttons img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            background: rgba(139, 154, 139, 0.15);
+            border: 1px solid rgba(139, 154, 139, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(232, 237, 232, 0.6);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 2rem;
+            margin: 3rem 0;
+            min-height: 280px;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            padding: 8rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #7a8a7a;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .philosophy-text {
+            font-size: 2rem;
+            line-height: 1.7;
+            color: #3d4f3f;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        /* Core Features */
+        .features-section {
+            background: #3d4f3f;
+            padding: 8rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            margin-bottom: 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .feature-item:nth-child(even) .feature-text {
+            order: 2;
+        }
+
+        .feature-number {
+            font-size: 1rem;
+            color: rgba(232, 237, 232, 0.5);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .feature-title {
+            font-size: 2.2rem;
+            color: #e8ede8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .feature-description {
+            font-size: 1.1rem;
+            color: rgba(232, 237, 232, 0.75);
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .feature-visual {
+            background: rgba(232, 237, 232, 0.05);
+            border: 1px solid rgba(232, 237, 232, 0.1);
+            border-radius: 8px;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Simple Grid Section */
+        .simple-section {
+            padding: 8rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .simple-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .simple-card {
+            text-align: center;
+        }
+
+        .simple-icon {
+            width: 60px;
+            height: 60px;
+            background: #3d4f3f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: #e8ede8;
+        }
+
+        .simple-card h4 {
+            font-size: 1.2rem;
+            color: #3d4f3f;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .simple-card p {
+            color: #636e63;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Download CTA */
+        .download-section {
+            background: linear-gradient(165deg, #2d3e30 0%, #1a2420 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/forest-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        .download-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(45, 62, 48, 0.8) 0%, rgba(26, 36, 32, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        .download-title {
+            font-size: 2.8rem;
+            color: #e8ede8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-subtitle {
+            font-size: 1.2rem;
+            color: rgba(232, 237, 232, 0.7);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-buttons img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .store-buttons img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: var(--color-background);
+            padding: var(--space-section) 2rem;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .reviews-title {
+            font-size: 2.5rem;
+            color: var(--color-text-primary);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .review-author {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2420;
+            color: rgba(232, 237, 232, 0.5);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(232, 237, 232, 0.7);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .philosophy-text {
+                font-size: 1.5rem;
+            }
+
+            .feature-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-item:nth-child(even) .feature-text {
+                order: 1;
+            }
+
+            .simple-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .download-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Subtle animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content, .philosophy-section, .feature-item {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>思考の渋滞を<br>次の一歩へ</h1>
+            <p>あなたのパーソナルAIフォーカスコーチ</p>
+            
+            <div class="store-buttons">
+                <a href="#"><img src="assets/app-store-badge-ja.svg" alt="App Storeでダウンロード"></a>
+                <a href="#"><img src="assets/google-play-badge-ja.png" alt="Google Playで手に入れよう"></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="section-label">Philosophy</div>
+        <p class="philosophy-text">
+            膨大なリストは、もう要らない。<br>
+            Focalは、あなたに必要な<br>
+            「次の一歩」だけを照らす。
+        </p>
+    </section>
+
+    <!-- Core Features -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">思考の受け皿</h3>
+                    <p class="feature-description">
+                        「やらなきゃ」と思った瞬間、声で、テキストで、そのまま投げ込む。カテゴリー分けも優先順位も、AIがすべて引き受ける。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <div style="color: rgba(232, 237, 232, 0.4); text-align: center; line-height: 1.8;">
+                        <strong>【推奨画像】</strong><br>
+                        スマートフォン画面のクローズアップ<br>
+                        音声入力中のマイクアイコンと波形<br>
+                        背景：ぼかした木目テーブル
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">次の一歩を提示</h3>
+                    <p class="feature-description">
+                        「何をしよう？」と思った時、画面に表示されるのは一つだけ。今、あなたがすべきことを、AIが選び、提示する。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <div style="color: rgba(232, 237, 232, 0.4); text-align: center; line-height: 1.8;">
+                        <strong>【推奨画像】</strong><br>
+                        シンプルなタスクカードのUI<br>
+                        大きなフォントで一つのタスクのみ表示<br>
+                        余白たっぷりの落ち着いた画面
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">勢いを生む対話</h3>
+                    <p class="feature-description">
+                        タスクが終わったら「完了」をタップ。すぐに次が現れる。この小さなリズムが、あなたの一日を前に進める。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <div style="color: rgba(232, 237, 232, 0.4); text-align: center; line-height: 1.8;">
+                        <strong>【推奨画像】</strong><br>
+                        タスク完了画面（控えめなアニメーション）<br>
+                        または：集中して作業する手元のショット<br>
+                        ライティング：自然光、シンプル
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Grid -->
+    <section class="simple-section">
+        <div class="section-label" style="text-align: center;">Design Principles</div>
+        
+        <div class="simple-grid">
+            <div class="simple-card">
+                <div class="simple-icon">◯</div>
+                <h4>ミニマル</h4>
+                <p>情報過多を排除。画面には常に、一つの主要なアクションだけ。</p>
+            </div>
+
+            <div class="simple-card">
+                <div class="simple-icon">✓</div>
+                <h4>肯定的</h4>
+                <p>ペナルティなし。失敗ではなく、次の機会として扱う。</p>
+            </div>
+
+            <div class="simple-card">
+                <div class="simple-icon">◐</div>
+                <h4>穏やか</h4>
+                <p>目に優しい配色。心を落ち着かせるトーン。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2 class="reviews-title">ユーザーの声</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「やるべきことが山積みで動けなくなっていた時、Focalが一歩ずつ導いてくれました。今では毎日使っています。」</p>
+                    <p class="review-author">28歳・エンジニア</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「ADHDの特性で計画を立てるのが苦手でしたが、AIが全部やってくれるので楽になりました。シンプルで使いやすい。」</p>
+                    <p class="review-author">35歳・デザイナー</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★☆</div>
+                    <p class="review-text">「音声でタスクを投げ込むだけで、あとは指示に従うだけ。これ以上シンプルなアプリはない。」</p>
+                    <p class="review-author">42歳・営業</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="download-section">
+        <h2 class="download-title">あなたの次の一歩を<br>今日から</h2>
+        <p class="download-subtitle">iOS・Android対応</p>
+        
+        <div class="store-buttons">
+            <a href="#"><img src="assets/app-store-badge-ja.svg" alt="App Storeでダウンロード"></a>
+            <a href="#"><img src="assets/google-play-badge-ja.png" alt="Google Playで手に入れよう"></a>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="terms.html">利用規約</a>
+            <a href="privacy.html">プライバシーポリシー</a>
+            <a href="mailto:contact@kinari.app?subject=Focalアプリについてのお問い合わせ&body=お問い合わせ内容をご記入ください：%0A%0A【お名前】%0A【メールアドレス】%0A【お問い合わせ内容】%0A%0A---%0AこのメールはFocalアプリのウェブサイトから送信されました。">お問い合わせ</a>
+        </div>
+        <p class="copyright">&copy; 2025 Focal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
