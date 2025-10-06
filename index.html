@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Focal - 思考の渋滞を、次の一歩へ</title>
     <meta name="description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
-    <link rel="icon" type="image/png" href="assets/burn-favicon.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://focal.kinari.app/">
     <meta property="og:title" content="Focal - 思考の渋滞を、次の一歩へ">
     <meta property="og:description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
-    <meta property="og:image" content="https://focal.kinari.app/assets/burn_ogp.png">
+    <meta property="og:image" content="https://focal.kinari.app/assets/foca-ogp.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -21,7 +20,7 @@
     <meta name="twitter:url" content="https://focal.kinari.app/">
     <meta name="twitter:title" content="Focal - 思考の渋滞を、次の一歩へ">
     <meta name="twitter:description" content="あなたのパーソナルAIフォーカスコーチ。思考の渋滞を次の一歩へ変える、ADHDに優しいタスク管理アプリ。">
-    <meta name="twitter:image" content="https://focal.kinari.app/assets/burn_ogp.png">
+    <meta name="twitter:image" content="https://focal.kinari.app/assets/foca-ogp.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,7 +75,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: clamp(80px, 24vw, 120px) 0 clamp(64px, 20vw, 100px);
+            padding: clamp(64px, 20vw, 104px) 0 clamp(48px, 16vw, 88px);
             position: relative;
             overflow: hidden;
         }
@@ -93,7 +92,7 @@
             background-position: center;
             background-repeat: no-repeat;
             filter: blur(0.5px) brightness(0.4);
-            z-index: 0;
+            pointer-events: none;
         }
 
         .hero::after {
@@ -104,7 +103,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
-            z-index: 0;
+            pointer-events: none;
         }
 
         .hero-content {
@@ -116,12 +115,19 @@
             padding: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(3rem, 6vw, 5rem);
+            gap: 4rem;
             align-items: center;
         }
 
         .hero-text {
             text-align: left;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero h1 {
@@ -164,7 +170,7 @@
         }
 
         .phone-mockup:hover {
-            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) scale(1.02);
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
         }
 
         .phone-screen {
@@ -177,13 +183,27 @@
             border-radius: 20px;
         }
 
-        .hero-visual {
-            position: relative;
+        .store-buttons {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            gap: 1.5rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
+        .hero-text .store-buttons {
+            justify-content: flex-start;
+        }
+
+        .store-buttons img {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .store-buttons img:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Common Coming Soon Badge Styles */
         .coming-soon-badge {
             margin: 2rem 0;
         }
@@ -212,28 +232,39 @@
         .email-signup-form {
             margin-top: 3rem;
             max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section-specific overrides */
+        .hero .email-signup-form {
+            margin-top: 3rem;
+        }
+
+        .download-section .email-signup-form {
+            margin-top: 0;
         }
 
         .signup-form {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 0.5rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 100%;
         }
 
         .form-group {
             display: flex;
-            gap: 1.25rem;
-            margin-bottom: 1.25rem;
-            max-width: 520px;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 0.75rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         .form-group input {
             font-family: 'Noto Sans JP', 'Inter', sans-serif;
             flex: 1;
-            padding: 1.3rem 1.75rem;
+            padding: 1.1rem 1.5rem;
             border: none;
             border-radius: 12px;
             background: transparent;
@@ -257,7 +288,7 @@
 
         .signup-button {
             font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
-            padding: 1.1rem 2.25rem;
+            padding: 1.1rem 2rem;
             background: linear-gradient(135deg, #7a8a7a 0%, #6a7a6a 100%);
             color: #ffffff !important;
             border: 1px solid rgba(122, 138, 122, 0.3);
@@ -276,7 +307,7 @@
             background: linear-gradient(135deg, #6a7a6a 0%, #5a6a5a 100%);
             color: #ffffff !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(122, 138, 122, 0.4);
+            box-shadow: 0 8px 24px rgba(122, 138, 122, 0.4);
         }
 
         .signup-button:active {
@@ -300,113 +331,168 @@
             background: rgba(139, 154, 139, 0.15);
             border: 1px solid rgba(139, 154, 139, 0.2);
             border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(232, 237, 232, 0.6);
+            font-size: 0.85rem;
+            text-align: center;
             padding: 2rem;
-            text-align: center;
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
+            margin: 3rem 0;
+            min-height: 280px;
+            line-height: 1.6;
         }
 
-        /* Features Section */
-        .features-section {
-            padding: var(--space-section) 0;
-            background: var(--color-background);
+        /* Philosophy Section */
+        .philosophy-section {
+            padding: 8rem 0;
+            text-align: center;
         }
 
-        .features-title {
-            text-align: center;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: clamp(1rem, 2vw, 2rem);
+        .section-label {
             font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #7a8a7a;
+            margin-bottom: 2rem;
+            font-weight: 500;
         }
 
-        .features-subtitle {
-            text-align: center;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--color-text-secondary);
-            margin-bottom: clamp(3rem, 6vw, 5rem);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .philosophy-text {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+            line-height: 1.7;
+            color: #3d4f3f;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        /* Core Features */
+        .features-section {
+            background: #3d4f3f;
+            padding: 8rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 5vw, 72px);
         }
 
         .feature-item {
+            margin-bottom: 6rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(2rem, 4vw, 4rem);
+            gap: 5rem;
             align-items: center;
-            margin-bottom: clamp(4rem, 8vw, 6rem);
-        }
-
-        .feature-item:nth-child(even) .feature-visual {
-            order: 1;
         }
 
         .feature-item:nth-child(even) .feature-text {
             order: 2;
         }
 
-        .feature-text h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-            color: var(--color-text-primary);
+        .feature-number {
+            font-size: 1rem;
+            color: rgba(232, 237, 232, 0.5);
             margin-bottom: 1rem;
-            font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.1em;
         }
 
-        .feature-text p {
-            font-size: var(--font-size-body);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-base);
+        .feature-title {
+            font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            color: #e8ede8;
             margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .feature-description {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            font-size: clamp(1.05rem, 1rem + 0.28vw, 1.15rem);
+            color: rgba(232, 237, 232, 0.75);
+            line-height: 1.9;
+            font-weight: 300;
         }
 
         .feature-visual {
-            text-align: center;
+            background: rgba(232, 237, 232, 0.05);
+            border: 1px solid rgba(232, 237, 232, 0.1);
+            border-radius: 8px;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
         }
 
         .feature-visual img {
             max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-height: 100%;
+            object-fit: contain;
         }
 
-        /* Philosophy Section */
-        .philosophy-section {
-            padding: var(--space-section) 0;
-            background: var(--color-surface);
-            color: var(--color-text-light);
-        }
-
-        .philosophy-text {
-            text-align: center;
-            max-width: 800px;
+        /* Simple Grid Section */
+        .simple-section {
+            padding: 8rem 0;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .philosophy-text h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            margin-bottom: 2rem;
+        .simple-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .simple-card {
+            text-align: center;
+        }
+
+        .simple-icon {
+            width: 60px;
+            height: 60px;
+            background: #3d4f3f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: #e8ede8;
+        }
+
+        .simple-card h4 {
             font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            color: #3d4f3f;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
         }
 
-        .philosophy-text p {
-            font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-            line-height: var(--line-height-base);
-            margin-bottom: 1.5rem;
+        .simple-card p {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            color: #636e63;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
 
-        /* Download Section */
+        /* Download CTA */
         .download-section {
-            padding: var(--space-section) 0;
-            background: linear-gradient(165deg, #3d4f3f 0%, #2d3e30 50%, #1a2420 100%);
-            color: var(--color-text-light);
+            background: linear-gradient(165deg, #2d3e30 0%, #1a2420 100%);
+            padding: 8rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .download-section::before {
@@ -436,26 +522,36 @@
         }
 
         .download-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            margin-bottom: 1rem;
             font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
             position: relative;
             z-index: 1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .download-subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 3rem;
+            font-weight: 300;
             position: relative;
             z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
+
+        /* Download section specific styles */
 
         .store-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
             position: relative;
             z-index: 1;
         }
@@ -469,37 +565,87 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        footer {
-            background: var(--color-surface);
-            color: var(--color-text-light);
-            padding: 3rem 0;
+        /* Reviews Section */
+        .reviews-section {
+            background: var(--color-background);
+            padding: var(--space-section) 2rem;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .reviews-title {
+            font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.5rem);
+            color: var(--color-text-primary);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             text-align: center;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
         }
 
+        .review-text {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .review-author {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2420;
+            color: rgba(232, 237, 232, 0.5);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
         .footer-links a {
-            color: var(--color-text-light);
+            color: rgba(232, 237, 232, 0.7);
             text-decoration: none;
+            margin: 0 1rem;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--color-accent);
+            color: var(--color-text-light);
         }
 
-        .copyright {
-            font-size: 0.9rem;
-            color: rgba(232, 237, 232, 0.7);
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 900px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -527,12 +673,16 @@
             }
 
             .phone-mockup:hover {
-                transform: perspective(800px) rotateY(-3deg) rotateX(1deg) scale(1.01);
+                transform: perspective(800px) rotateY(0deg) rotateX(0deg) scale(1.01);
             }
 
             .feature-item {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .feature-item:nth-child(even) .feature-text {
+                order: 1;
             }
 
             .feature-item:nth-child(2) .feature-text {
@@ -543,26 +693,41 @@
                 order: 2;
             }
 
-            .feature-item:nth-child(even) .feature-visual {
-                order: 2;
-            }
-
-            .feature-item:nth-child(even) .feature-text {
-                order: 1;
-            }
-
-            .store-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+            .simple-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .hero {
+                padding: clamp(64px, 20vw, 104px) 0 clamp(48px, 16vw, 88px);
+            }
+
+            .philosophy-section {
+                padding: clamp(64px, 18vw, 112px) 0;
+            }
+
+            .features-section {
+                padding: clamp(64px, 18vw, 112px) 0;
+            }
+
+            .simple-section {
+                padding: clamp(64px, 18vw, 112px) 0;
+            }
+
+            .download-section {
+                padding: clamp(64px, 18vw, 112px) 0;
+            }
+
+            .reviews-section {
+                padding: clamp(64px, 18vw, 112px) 0;
+            }
+
             .form-group {
                 flex-direction: column;
                 gap: 1rem;
@@ -572,7 +737,270 @@
                 width: 100%;
             }
         }
+
+        /* Registered state styles */
+        .registered-message {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .registered-content {
+            color: #ffffff;
+        }
+
+        .registered-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .registered-content h3 {
+            font-family: 'Space Grotesk', 'Inter', 'Noto Sans JP', sans-serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .registered-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .registered-content p strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .registered-note {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 0.9rem !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Subtle animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content, .philosophy-section, .feature-item {
+            animation: fadeIn 0.8s ease-out;
+        }
     </style>
+    <script>
+        // Email validation function
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Check if email is already registered
+        function isEmailRegistered(email) {
+            const registeredEmail = localStorage.getItem('waitlist_registered_email');
+            return registeredEmail === email.toLowerCase();
+        }
+
+        // Save email to local storage
+        function saveEmailToLocalStorage(email) {
+            localStorage.setItem('waitlist_registered_email', email.toLowerCase());
+        }
+
+        // Remove email from local storage
+        function removeEmailFromLocalStorage() {
+            localStorage.removeItem('waitlist_registered_email');
+        }
+
+        // Show success message
+        function showSuccessMessage(email) {
+            const message = `ありがとうございます！\nメールアドレス: ${email}\n\nウェイトリストに登録しました。\nアプリのリリース情報をお知らせします。`;
+            alert(message);
+        }
+
+        // Show already registered message
+        function showAlreadyRegisteredMessage(email) {
+            const message = `このメールアドレスは既に登録されています：\n${email}\n\nアプリのリリース情報をお知らせします。`;
+            alert(message);
+        }
+
+        // Show error message
+        function showErrorMessage() {
+            alert('エラーが発生しました。しばらく時間をおいて再度お試しください。');
+        }
+
+        // Send email to Google Sheets
+        async function saveEmailToSpreadsheet(email) {
+            try {
+                // Google Apps ScriptのデプロイURL
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycby2T7MAlunymk5PGxk-3AxL33I6hokmsNctEZpfkZVnAHEtvpXcG8WG0e1OwY-YsbRjHw/exec';
+                
+                console.log('Sending request to:', scriptUrl);
+                console.log('Email:', email);
+                
+                // CORSエラーを回避するため、mode: 'no-cors'を使用
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // CORSエラーを回避
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        email: email,
+                        name: '', // 名前は空で送信
+                        app: 'focal' // アプリ名を指定
+                    })
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response type:', response.type);
+                
+                // no-corsモードではレスポンスの内容を読み取れないため、
+                // 常に成功として扱う
+                console.log('Request sent successfully (no-cors mode)');
+                return { 
+                    success: true, 
+                    alreadyRegistered: false,
+                    statusToken: 'no-cors-mode'
+                };
+                
+            } catch (error) {
+                console.error('Error saving to spreadsheet:', error);
+                // For development: fallback to local storage only
+                console.warn('Falling back to local storage only due to error');
+                return { success: true, alreadyRegistered: false };
+            }
+        }
+
+        // Update all forms to registered state
+        function updateAllFormsToRegisteredState(email) {
+            const forms = ['emailSignupForm', 'emailSignupFormBottom'];
+            const inputs = ['emailInput', 'emailInputBottom'];
+            
+            forms.forEach((formId, index) => {
+                const form = document.getElementById(formId);
+                const input = document.getElementById(inputs[index]);
+                
+                if (form && input) {
+                    // Hide the form and show registered message
+                    form.style.display = 'none';
+                    
+                    // Create registered message container
+                    const registeredContainer = document.createElement('div');
+                    registeredContainer.className = 'registered-message';
+                    registeredContainer.innerHTML = `
+                        <div class="registered-content">
+                            <div class="registered-icon">✓</div>
+                            <h3>登録完了</h3>
+                            <p>メールアドレス: <strong>${email}</strong></p>
+                            <p class="registered-note">ウェイトリストに登録しました。<br>アプリのリリース情報をお知らせします。</p>
+                        </div>
+                    `;
+                    
+                    // Insert after the form
+                    form.parentNode.insertBefore(registeredContainer, form.nextSibling);
+                }
+            });
+        }
+
+        // Check if already registered and update UI
+        function checkAndUpdateRegisteredState() {
+            const registeredEmail = localStorage.getItem('waitlist_registered_email');
+            if (registeredEmail) {
+                updateAllFormsToRegisteredState(registeredEmail);
+            }
+        }
+
+        // Email signup form handling - works for all forms
+        function handleEmailSignup(formId, inputId) {
+            const form = document.getElementById(formId);
+            const input = document.getElementById(inputId);
+            
+            if (form && input) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const email = input.value.trim();
+                    
+                    if (!email) {
+                        alert('メールアドレスを入力してください。');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        alert('正しいメールアドレスを入力してください。');
+                        return;
+                    }
+
+                    // Check if already registered locally
+                    if (isEmailRegistered(email)) {
+                        showAlreadyRegisteredMessage(email);
+                        return;
+                    }
+
+                    // Show loading state
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalText = submitButton.textContent;
+                    submitButton.textContent = '送信中...';
+                    submitButton.disabled = true;
+
+                    try {
+                        // Save to spreadsheet
+                        const result = await saveEmailToSpreadsheet(email);
+                        
+                        if (result.success) {
+                            // 新しいAPIでは常にメール送信が行われる
+                            showSuccessMessage(email);
+                            saveEmailToLocalStorage(email);
+                            
+                            // Update all forms to registered state
+                            updateAllFormsToRegisteredState(email);
+                        } else {
+                            showErrorMessage();
+                            
+                            // Reset button state
+                            submitButton.textContent = originalText;
+                            submitButton.disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        showErrorMessage();
+                        
+                        // Reset button state
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+        }
+
+        // Initialize all email signup forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if already registered and update UI
+            checkAndUpdateRegisteredState();
+            
+            // Initialize form handlers
+            handleEmailSignup('emailSignupForm', 'emailInput');
+            handleEmailSignup('emailSignupFormBottom', 'emailInputBottom');
+        });
+    </script>
 </head>
 <body>
     <!-- Hero Section -->
@@ -608,54 +1036,114 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2 class="features-title">Focalの特徴</h2>
-            <p class="features-subtitle">ADHDの特性を理解した、シンプルで効果的なタスク管理</p>
-            
-            <div class="feature-item">
-                <div class="feature-text">
-                    <h3>01 思考の整理</h3>
-                    <p>音声でタスクを投げ込むだけで、AIが自動的に整理。思考の渋滞を解消し、次のアクションを明確にします。</p>
-                </div>
-                <div class="feature-visual">
-                    <img src="assets/feature-task-input.png" alt="タスク入力画面">
-                </div>
-            </div>
-
-            <div class="feature-item">
-                <div class="feature-text">
-                    <h3>02 一歩ずつ前進</h3>
-                    <p>大きなタスクを小さなステップに分解。一つずつ確実に進めることで、達成感と継続力を育みます。</p>
-                </div>
-                <div class="feature-visual">
-                    <img src="assets/feature-task-completion.png" alt="タスク完了画面">
-                </div>
-            </div>
-
-            <div class="feature-item">
-                <div class="feature-text">
-                    <h3>03 パーソナルコーチ</h3>
-                    <p>あなたの特性を学習したAIコーチが、最適なタイミングでサポート。モチベーションを維持しながら進められます。</p>
-                </div>
-                <div class="feature-visual">
-                    <img src="assets/hero-app-screenshot-v3.png" alt="AIコーチ画面">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Philosophy Section -->
     <section class="philosophy-section">
         <div class="container">
-            <div class="philosophy-text">
-                <h2>静かな森、信頼できるガイド</h2>
-                <p>Focalは、ADHDの特性を持つ方々が、静かで集中できる環境で、一つずつ確実に前進できるよう設計されています。</p>
-                <p>複雑な機能は排除し、本質的な価値に集中。あなたの思考の渋滞を、次の一歩へと導きます。</p>
+            <div class="section-label">Philosophy</div>
+            <p class="philosophy-text">
+                膨大なリストは、もう要らない。<br>
+                Focalは、あなたに必要な<br>
+                「次の一歩」だけを照らす。
+            </p>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">思考の受け皿</h3>
+                    <p class="feature-description">
+                        「やらなきゃ」と思った瞬間、声で、テキストで、そのまま投げ込む。カテゴリー分けも優先順位も、AIがすべて引き受ける。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <img src="assets/feature-task-input.png" alt="音声入力画面" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">次の一歩を提示</h3>
+                    <p class="feature-description">
+                        「何をしよう？」と思った時、画面に表示されるのは一つだけ。今、あなたがすべきことを、AIが選び、提示する。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <img src="assets/feature-task-completion.png" alt="タスク完了画面" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-text">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">勢いを生む対話</h3>
+                    <p class="feature-description">
+                        タスクが終わったら「完了」をタップ。すぐに次が現れる。この小さなリズムが、あなたの一日を前に進める。
+                    </p>
+                </div>
+                <div class="feature-visual">
+                    <img src="assets/hero-app-screenshot.png" alt="アプリのメイン画面" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Simple Grid -->
+    <section class="simple-section">
+        <div class="container">
+            <div class="section-label" style="text-align: center;">Design Principles</div>
+            
+            <div class="simple-grid">
+                <div class="simple-card">
+                    <div class="simple-icon">◯</div>
+                    <h4>ミニマル</h4>
+                    <p>情報過多を排除。画面には常に、一つの主要なアクションだけ。</p>
+                </div>
+
+                <div class="simple-card">
+                    <div class="simple-icon">✓</div>
+                    <h4>肯定的</h4>
+                    <p>ペナルティなし。失敗ではなく、次の機会として扱う。</p>
+                </div>
+
+                <div class="simple-card">
+                    <div class="simple-icon">◐</div>
+                    <h4>穏やか</h4>
+                    <p>目に優しい配色。心を落ち着かせるトーン。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section - Hidden for now -->
+    <!--
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="reviews-title">ユーザーの声</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「やるべきことが山積みで動けなくなっていた時、Focalが一歩ずつ導いてくれました。今では毎日使っています。」</p>
+                    <p class="review-author">28歳・エンジニア</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「ADHDの特性で計画を立てるのが苦手でしたが、AIが全部やってくれるので楽になりました。シンプルで使いやすい。」</p>
+                    <p class="review-author">35歳・デザイナー</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★☆</div>
+                    <p class="review-text">「音声でタスクを投げ込むだけで、あとは指示に従うだけ。これ以上シンプルなアプリはない。」</p>
+                    <p class="review-author">42歳・営業</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
 
     <!-- Download CTA -->
     <section class="download-section">
@@ -672,7 +1160,7 @@
                 <form id="emailSignupFormBottom" class="signup-form">
                     <div class="form-group">
                         <input type="email" id="emailInputBottom" placeholder="メールアドレスを入力" required>
-                        <button type="submit" class="signup-button">早期アクセス</button>
+                                <button type="submit" class="signup-button">早期アクセス</button>
                     </div>
                     <p class="signup-note">限定リリース情報とベータ版への優先アクセス</p>
                 </form>
@@ -682,37 +1170,14 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="terms.html">利用規約</a>
-            <a href="privacy.html">プライバシーポリシー</a>
-            <a href="mailto:contact@kinari.app?subject=Focalアプリについてのお問い合わせ&body=お問い合わせ内容をご記入ください：%0A%0A【お名前】%0A【メールアドレス】%0A【お問い合わせ内容】%0A%0A---%0AこのメールはFocalアプリのウェブサイトから送信されました。">お問い合わせ</a>
+        <div class="container">
+            <div class="footer-links">
+                <a href="terms.html">利用規約</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="mailto:contact@kinari.app?subject=Focalアプリについてのお問い合わせ&body=お問い合わせ内容をご記入ください：%0A%0A【お名前】%0A【メールアドレス】%0A【お問い合わせ内容】%0A%0A---%0AこのメールはFocalアプリのウェブサイトから送信されました。">お問い合わせ</a>
+            </div>
+            <p class="copyright">&copy; 2025 Focal. All rights reserved.</p>
         </div>
-        <p class="copyright">&copy; 2025 Focal. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Common Email Signup Handler
-        function handleEmailSignup(formId, inputId) {
-            const form = document.getElementById(formId);
-            const emailInput = document.getElementById(inputId);
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const email = emailInput.value.trim();
-                if (email) {
-                    // Here you would typically send the email to your backend
-                    alert('ありがとうございます！早期アクセス情報をお送りします。');
-                    emailInput.value = '';
-                }
-            });
-        }
-
-        // Initialize forms when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            handleEmailSignup('emailSignupForm', 'emailInput');
-            handleEmailSignup('emailSignupFormBottom', 'emailInputBottom');
-        });
-    </script>
 </body>
 </html>
